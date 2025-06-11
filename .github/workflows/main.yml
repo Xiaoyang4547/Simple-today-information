@@ -21,15 +21,15 @@ jobs:
       - name: 安装依赖
         run: |
           python -m pip install --upgrade pip
-          pip install pyinstaller easygui
+          pip install pyinstaller PyQt5 requests easygui
 
       - name: 打包为exe
         run: |
-          pyinstaller --onefile Simple today's information.py
+          pyinstaller --onefile "Simple today's information.py"
 
       - name: 上传exe到Release
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/Simple today's information.exe
+          files: dist/Simple\ today's\ information.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
